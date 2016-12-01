@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="timeCalc">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Time Calc</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.5.x" src="https://code.angularjs.org/1.5.8/angular.js" data-semver="1.5.8"></script>
+    <script src="main.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+40 hr week time calculator
+
+<form ng-repeat="day in days">
+    <br>
+    Day {{day.day}}
+    <br> HRs: <input type="text" ng-model="day.hModel"> Min: <input type="text" ng-model="day.mModel">
+</form>
+<br>
+<button ng-click="calcTime()">
+    Calculate
+</button>
+<br>
+Amount Remaining: Hours: {{time.hours}} Min: {{time.min}}
+</body>
+
+</html>
