@@ -33,8 +33,8 @@ app.controller('MainCtrl', function ($scope) {
     };
 
     $scope.time = {
-        hours: totalTime / milliHour,
-        min: totalTime % milliHour
+        hours: 40,
+        min: 0
     };
 
 });
