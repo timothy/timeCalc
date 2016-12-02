@@ -1,0 +1,16 @@
+
+<div ng-controller="MyrouteCtrl as ctrl">
+  40 hr week time calculator
+
+  <form ng-repeat="day in ctrl.days">
+    <br>
+    Day {{day.day}}
+    <br> HRs: <input type="text" ng-model="day.hModel"> Min: <input type="text" ng-model="day.mModel">
+  </form>
+  <br>
+  <button ng-click="ctrl.calcTime()">
+    Calculate
+  </button>
+  <br>
+  Amount Remaining: Hours: {{ctrl.time.hours}} Min: {{ctrl.time.min}}
+</div>
