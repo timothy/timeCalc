@@ -10,17 +10,17 @@
 angular.module('calcApp')
   .controller('MyrouteCtrl', function () {
 
-    ////////////////////////////////Variables///////////////////////////////////////////
-    var DOW =["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+
+    var DOW =['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
     var week = 7;
     var milliHour = 60 * 60 * 1000;
     var milliMin = 60 * 1000;
     var totalTime = 40 * milliHour;// this is total time in millisecond
     var days = [];
 
-    this.calcType = "min";
-    this.btnActive = {decimal:"",min:"active"};
-    ///////////////////////////////////////////////////////////////////////////////////
+    this.calcType = 'min';
+    this.btnActive = {decimal:'',min:'active'};
+
 
     /**
      * this will populate the view using the ng-repeat directive
@@ -77,11 +77,13 @@ angular.module('calcApp')
 
       //set btn active
       for(var prop in this.btnActive){
-        if(this.btnActive.hasOwnProperty(prop))
-        this.btnActive[prop] = "";
+        if(this.btnActive.hasOwnProperty(prop)){
+          this.btnActive[prop] = '';
+        }
+
       }
 
-      this.btnActive[newVal] = "active";
-    }
+      this.btnActive[newVal] = 'active';
+    };
 
   });
