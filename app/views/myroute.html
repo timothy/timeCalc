@@ -3,18 +3,19 @@
 
   <div class="btn-group btn-group-justified">
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-warning btn-lg" ng-click="vm.changeCalc('decimal')">
+      <button type="button" class="btn btn-warning btn-lg {{vm.btnActive.decimal}}" ng-click="vm.changeCalc('decimal')">
         <span class="glyphicon glyphicon-scale" aria-hidden="true"></span> Decimal
       </button>
     </div>
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-warning btn-lg" ng-click="vm.changeCalc('min')">
+      <button type="button" class="btn btn-warning btn-lg {{vm.btnActive.min}}" ng-click="vm.changeCalc('min')">
         <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Minuets
       </button>
     </div>
   </div>
   <br>
-  <form class="form-inline" ng-repeat="day in vm.days">
+
+  <form class="form-inline" ng-repeat="day in vm.days" ng-if="vm.calcType === 'min'">
 
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -25,13 +26,13 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
-              <label for="day.forH">HRs:</label><input id="day.forH" type="number" ng-model="day.hModel"
+              <label>HRs:</label><input type="number" ng-model="day.hModel"
                                                        class="form-control">
             </div><!-- /input-group -->
           </div><!-- /.col-lg-6 -->
           <div class="col-lg-6">
             <div class="form-group">
-              <label for="day.forM">Min:</label><input id="day.forM" type="number" ng-model="day.mModel"
+              <label>Min:</label><input type="number" ng-model="day.mModel"
                                                        class="form-control">
             </div><!-- /input-group -->
           </div><!-- /.col-lg-6 -->
@@ -39,17 +40,45 @@
       </div>
     </div>
   </form>
+
+  <form class="form-inline" ng-repeat="day in vm.days" ng-if="vm.calcType === 'decimal'">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">{{day.day}}</h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label>Decimal amount of time:</label><input type="number" ng-model="day.dModel"
+                                                       class="form-control">
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div>
+    </div>
+  </form>
+
   <button class="btn btn-lg btn-success center-block" ng-click="vm.calcTime()">
     Calculate
   </button>
   <br>
-  <h2 class="text-center">
+  <h2 class="text-center" ng-if="vm.calcType === 'min'">
     <span class="label label-info">Amount Remaining:</span>
-    <p class="btn btn-primary" type="button">
+    <p class="btn btn-primary btn-lg" type="button">
       Hours: <span class="badge">{{vm.time.hours}}</span>
     </p>
-    <p class="btn btn-primary" type="button">
+    <p class="btn btn-primary btn-lg" type="button">
       Min: <span class="badge">{{vm.time.min}}</span>
+    </p>
+  </h2>
+
+  <h2 class="text-center" ng-if="vm.calcType === 'decimal'">
+    <span class="label label-info">Amount Remaining:</span>
+    <p class="btn btn-primary btn-lg" type="button">
+      Decimal hours: <span class="badge">{{vm.time.decimal}}</span>
     </p>
   </h2>
 </div>
