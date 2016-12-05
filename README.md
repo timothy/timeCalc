@@ -14,7 +14,7 @@ This project requires node.js, bower, and grunt to be installed before doing the
 
 install dependencies `npm install` and then `bower install`
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `grunt build` for building and `grunt serve` for preview.
 
 ## Testing
 
