@@ -10,16 +10,17 @@
 angular.module('calcApp')
   .controller('MyrouteCtrl', function () {
 
-
+    var DOW =["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
     var week = 7;
     var milliHour = 60 * 60 * 1000;
     var milliMin = 60 * 1000;
+    this.calcType = "min";
 
     var totalTime = 40 * milliHour;// this is total time in millisecond
     var days = [];
 
     for (var i = 0; i < week; i++) {
-      days.push({day: i + 1, hModel: 0, mModel: 0});
+      days.push({day: DOW[i], hModel: 0, mModel: 0,forH:"h"+i,forM:"m"+i});
     }
 
     this.days = days;
@@ -43,9 +44,8 @@ angular.module('calcApp')
       min: 0
     };
 
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    this.changeCalc = function (newVal) {
+
+    }
+
   });
